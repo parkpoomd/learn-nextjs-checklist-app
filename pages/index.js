@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 import AddTodoSection from "@/lib/components/todo/AddTodoSection";
 import TodoSection from "@/lib/components/todo/TodoSection";
 import { useTodoStore } from "@/lib/store/TodoStore";
+import ProgressSection from "@/lib/components/progress/ProgressSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function Home() {
             {todos.map((todo) => (
               <TodoSection key={todo.id} todo={todo} />
             ))}
+            <ProgressSection />
           </div>
         </main>
       </div>
