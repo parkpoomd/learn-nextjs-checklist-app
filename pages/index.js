@@ -1,10 +1,14 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import AddTodoSection from "@/lib/components/todo/AddTodoSection";
+import TodoSection from "@/lib/components/todo/TodoSection";
+import { useTodoStore } from "@/lib/store/TodoStore";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const todos = useTodoStore((state) => state.todos);
+
   return (
     <>
       <Head>
@@ -21,6 +25,9 @@ export default function Home() {
           <h1 className="text-2xl font-bold text-gray-three">Dashboard</h1>
           <div className="mt-10">
             <AddTodoSection />
+            {todos.map((todo) => (
+              <TodoSection key={todo.id} todo={todo} />
+            ))}
           </div>
         </main>
       </div>
